@@ -1,6 +1,6 @@
 # uniconn
 
-A universal connection dial and listen library, support `tcp`, `unix` and `quic` with TLS
+A universal connection dial and listen library, support `tcp` and `unix` with TLS
 
 ## Usage
 
