@@ -74,8 +74,10 @@ networkAllowed:
 		}
 		for k := range values {
 			vs := values[k]
-			if len(vs) > 0 {
-				cfg.Options[k] = vs[len(vs)-1]
+			for _, v := range vs {
+				if v != "" {
+					cfg.Options[k] = v
+				}
 			}
 		}
 	}
