@@ -42,9 +42,9 @@ func (c ListenConfig) Listen(ctx context.Context) (lis net.Listener, err error) 
 // Each schema can add a '+tls' suffix to enable TLS.
 //
 // Supported options are:
-//   - tls-cert-file: TLS certificate file path, mandatory if TLS is enabled
-//   - tls-key-file: TLS certificate key file path, mandatory if TLS is enabled
-//   - tls-client-ca-file: TLS certificate file path to client ca, setting this option will enable client authentication
+//   - cert-file: TLS certificate file path, mandatory if TLS is enabled
+//   - key-file: TLS certificate key file path, mandatory if TLS is enabled
+//   - client-ca-file: TLS certificate file path to client ca, setting this option will enable client authentication
 //   - keep-alive: TCP keep-alive period, in format of "1m", "1h", etc.
 //   - multipath-tcp: Enable multipath TCP, in format of "true" or "false"
 func ParseListenURI(s string, overrides ...map[string]string) (cfg ListenConfig, err error) {
@@ -74,14 +74,14 @@ func ParseListenURI(s string, overrides ...map[string]string) (cfg ListenConfig,
 	if cfg.Secure {
 		cfg.TLSConfig = &tls.Config{}
 
-		if clientCAFile := cfg.Options[OptionTLSClientCAFile]; clientCAFile != "" {
+		if clientCAFile := cfg.Options[OptionClientCAFile]; clientCAFile != "" {
 			if cfg.TLSConfig.ClientCAs, err = certPoolWithFile(clientCAFile, false); err != nil {
 				return
 			}
 			cfg.TLSConfig.ClientAuth = tls.RequireAndVerifyClientCert
 		}
 
-		if crtFile, keyFile := cfg.Options[OptionTLSCertFile], cfg.Options[OptionTLSKeyFile]; crtFile == "" || keyFile == "" {
+		if crtFile, keyFile := cfg.Options[OptionCertFile], cfg.Options[OptionKeyFile]; crtFile == "" || keyFile == "" {
 			err = errors.New("missing tls cert file or key file")
 			return
 		} else {
