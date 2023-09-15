@@ -36,16 +36,16 @@ func TestDialConfig_Dial(t *testing.T) {
 	for _, s := range suites {
 		t.Run("dial-"+s.name, func(t *testing.T) {
 			ql := &url.Values{}
-			ql.Set(OptionTLSCertFile, filepath.Join("testdata", "server.full-crt.pem"))
-			ql.Set(OptionTLSKeyFile, filepath.Join("testdata", "server.key.pem"))
-			ql.Set(OptionTLSClientCAFile, filepath.Join("testdata", "rootca.crt.pem"))
+			ql.Set(OptionCertFile, filepath.Join("testdata", "server.full-crt.pem"))
+			ql.Set(OptionKeyFile, filepath.Join("testdata", "server.key.pem"))
+			ql.Set(OptionClientCAFile, filepath.Join("testdata", "rootca.crt.pem"))
 
 			qd := &url.Values{}
-			qd.Set(OptionTLSCAFile, filepath.Join("testdata", "rootca.crt.pem"))
-			qd.Set(OptionTLSCertFile, filepath.Join("testdata", "client.full-crt.pem"))
-			qd.Set(OptionTLSKeyFile, filepath.Join("testdata", "client.key.pem"))
+			qd.Set(OptionCAFile, filepath.Join("testdata", "rootca.crt.pem"))
+			qd.Set(OptionCertFile, filepath.Join("testdata", "client.full-crt.pem"))
+			qd.Set(OptionKeyFile, filepath.Join("testdata", "client.key.pem"))
 			if s.serverName {
-				qd.Set(OptionTLSServerName, "localhost")
+				qd.Set(OptionServerName, "localhost")
 			}
 
 			var (

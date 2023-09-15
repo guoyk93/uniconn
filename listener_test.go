@@ -64,8 +64,8 @@ func TestParseListenURI(t *testing.T) {
 	cfg, err = ParseListenURI(
 		"tcp+ssl://127.0.0.1:8080?keep-alive=5m&multipath-tcp=true",
 		map[string]string{
-			OptionTLSCertFile: filepath.Join("testdata", "server.full-crt.pem"),
-			OptionTLSKeyFile:  filepath.Join("testdata", "server.key.pem"),
+			OptionCertFile: filepath.Join("testdata", "server.full-crt.pem"),
+			OptionKeyFile:  filepath.Join("testdata", "server.key.pem"),
 		},
 	)
 	require.NoError(t, err)

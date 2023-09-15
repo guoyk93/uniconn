@@ -30,10 +30,10 @@ func TestParseURI(t *testing.T) {
 	require.Equal(t, map[string]string{"keep-alive": "5m", "multipath-tcp": "true"}, cfg.Options)
 
 	cfg, err = ParseURI(
-		"tcp+ssl://127.0.0.1:8080?keep-alive=5m&multipath-tcp=true&tls-cert-file="+url.QueryEscape(filepath.Join("testdata", "ssss")),
+		"tcp+ssl://127.0.0.1:8080?keep-alive=5m&multipath-tcp=true&cert-file="+url.QueryEscape(filepath.Join("testdata", "ssss")),
 		map[string]string{
-			OptionTLSCertFile: filepath.Join("testdata", "example-com.crt"),
-			OptionTLSKeyFile:  filepath.Join("testdata", "example-com.key"),
+			OptionCertFile: filepath.Join("testdata", "example-com.crt"),
+			OptionKeyFile:  filepath.Join("testdata", "example-com.key"),
 		},
 	)
 	require.NoError(t, err)
@@ -41,7 +41,7 @@ func TestParseURI(t *testing.T) {
 	require.Equal(t, cfg.Address, "127.0.0.1:8080")
 	require.True(t, cfg.Secure)
 	require.Equal(t, map[string]string{"keep-alive": "5m", "multipath-tcp": "true",
-		OptionTLSCertFile: filepath.Join("testdata", "example-com.crt"),
-		OptionTLSKeyFile:  filepath.Join("testdata", "example-com.key"),
+		OptionCertFile: filepath.Join("testdata", "example-com.crt"),
+		OptionKeyFile:  filepath.Join("testdata", "example-com.key"),
 	}, cfg.Options)
 }

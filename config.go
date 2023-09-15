@@ -7,14 +7,17 @@ import (
 )
 
 const (
-	OptionTLSServerName   = "tls-server-name"
-	OptionTLSCAFile       = "tls-ca-file"
-	OptionTLSClientCAFile = "tls-client-ca-file"
-	OptionTLSCertFile     = "tls-cert-file"
-	OptionTLSKeyFile      = "tls-key-file"
-	OptionKeepAlive       = "keep-alive"
-	OptionMultipathTCP    = "multipath-tcp"
-	OptionInsecure        = "insecure"
+	// TLS
+
+	OptionServerName   = "server-name"
+	OptionCAFile       = "ca-file"
+	OptionClientCAFile = "client-ca-file"
+	OptionCertFile     = "cert-file"
+	OptionKeyFile      = "key-file"
+	OptionInsecure     = "insecure"
+
+	OptionKeepAlive    = "keep-alive"
+	OptionMultipathTCP = "multipath-tcp"
 )
 
 // Networks is the list of supported network types
