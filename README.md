@@ -9,7 +9,7 @@ package main
 
 import (
 	"context"
-	"github.com/guoyk93/uniconn"
+	"github.com/yankeguo/uniconn"
 )
 
 func listen() {
@@ -57,10 +57,6 @@ func dial() {
 - `key-file`: TLS certificate key file path, for client auth
 - `server-name`: TLS server name, overrides connection address
 - `insecure`: skip tls verification
-
-## Donation
-
-View https://guoyk.xyz/donation
 
 ## Credits
 
